@@ -45,7 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startLabel.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startLabel.ForeColor = System.Drawing.Color.White;
-            this.startLabel.Location = new System.Drawing.Point(105, 114);
+            this.startLabel.Location = new System.Drawing.Point(101, 115);
             this.startLabel.Name = "startLabel";
             this.startLabel.Size = new System.Drawing.Size(461, 93);
             this.startLabel.TabIndex = 0;

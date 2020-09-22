@@ -172,9 +172,7 @@ namespace Pong
 
             #region update ball position
 
-            // TODO create code to move ball either left or right based on ballMoveRight and using BALL_SPEED
-
-            // TODO create code move ball either down or up based on ballMoveDown and using BALL_SPEED
+   
 
             #endregion
             if (ballMoveRight == true)
@@ -199,17 +197,7 @@ namespace Pong
 
             #region update paddle positions
 
-            if (aKeyDown == true && p1.Y > 0)
-            {
-                // TODO create code to move player 1 paddle up using p1.Y and PADDLE_SPEED
-            }
-
-            // TODO create an if statement and code to move player 1 paddle down using p1.Y and PADDLE_SPEED
-
-            // TODO create an if statement and code to move player 2 paddle up using p2.Y and PADDLE_SPEED
-
-            // TODO create an if statement and code to move player 2 paddle down using p2.Y and PADDLE_SPEED
-
+          
             #endregion
 
             // Player 1 paddle 
@@ -240,13 +228,7 @@ namespace Pong
 
             #region ball collision with top and bottom lines
 
-            if (ball.Y < 0) // if ball hits top line
-            {
-                // TODO use ballMoveDown boolean to change direction
-                // TODO play a collision sound
-            }
-            // TODO In an else if statement use ball.Y, this.Height, and ball.Width to check for collision with bottom line
-            // If true use ballMoveDown down boolean to change direction
+            
 
             #endregion
             if (ball.Y <= 0)
@@ -294,33 +276,8 @@ namespace Pong
 
             #region ball collision with side walls (point scored)
 
-            if (ball.X <= 0)  // ball hits left wall logic
-            {
-
-                ball.Y = this.Height / 2;
-                ball.X = this.Width / 2;
-                ballMoveRight = false;
-                scoreSound.Play();
-
-
-                // --- play score sound
-                // --- update player 2 score
-
-                //  use if statement to check to see if player 2 has won the game. If true run 
-                // GameOver method. Else change direction of ball and call SetParameters method.
-
-            }
-
-            if (ball.X >= this.Width)
-            {
-                ball.Y = this.Height / 2;
-                ball.X = this.Width / 2;
-                ballMoveRight = true;
-                scoreSound.Play();
-            }
 
          
-
 
             //  same as above but this time check for collision with the right wall
 
@@ -341,7 +298,17 @@ namespace Pong
                 SetParameters();
             }
 
+            if(player1Score == gameWinScore)
+            {
 
+                GameOver("Player 1 Wins " + "Press SPACE to Play again");
+            }
+
+            if (player2Score == gameWinScore)
+            {
+
+                GameOver("Player 2 Wins " + "Press SPACE to Play again");
+            }
 
             //refresh the screen, which causes the Form1_Paint method to run
             this.Refresh();
@@ -355,25 +322,10 @@ namespace Pong
 
         private void GameOver(string winner)
         {
-            newGameOk = true;       
-            if (player1Score == gameWinScore)
-            {
-                gameUpdateLoop.Stop();
-                startLabel.Text = ("Player One Wins!" + "Play Again?");
-            }
-
-            if (player2Score == gameWinScore)
-            {
-
-                gameUpdateLoop.Stop();
-                startLabel.Text = ("Player Two Wins!" + "Play Again?");
-            }
-            // TODO create game over logic
-            // --- stop the gameUpdateLoop
-            // --- show a message on the startLabel to indicate a winner, (need to Refresh).
-            // --- pause for two seconds 
-            // --- use the startLabel to ask the user if they want to play again
-
+            newGameOk = true;
+            gameUpdateLoop.Stop();
+            startLabel.Visible = true;
+            startLabel.Text = winner;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
